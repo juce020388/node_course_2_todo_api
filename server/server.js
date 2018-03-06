@@ -13,6 +13,7 @@ app.post('/todos',(req, res) => {
   let todo = new Todo({
     text: req.body.text
   });
+
   todo.save().then( (doc) => {
     res.status(200).send(doc);
   }, (err)=> {
@@ -20,7 +21,8 @@ app.post('/todos',(req, res) => {
   })
 });
 
-console.log('Portas: ',process.env.PORT);
 app.listen(process.env.PORT || 3000, ()=> {
   console.log(`Started on ${process.env.PORT || 3000}`);
-})
+});
+
+module.exports = {app};
